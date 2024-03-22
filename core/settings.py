@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ponte.apps.PonteConfig',
-    'fio.apps.FioConfig',
-    'barra.apps.BarraConfig',
 ]
 
 MIDDLEWARE = [
