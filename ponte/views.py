@@ -4,3 +4,7 @@ from django.shortcuts import render
 
 def home(request):
     return render(request, 'ponte.html')
+
+
+def Login_Register(request):
+    return render(request, 'Login_Register.html')
