@@ -49,7 +49,7 @@
                   <input type="text" class="form-control" id="nome" name="nome" required>
                 </div>
                 <div class="row">
-                  <div class="col">
+                  <div class="col-auto mt-3">
                     <label for="comprimento">Comprimento da barra</label>
                     <input type="number" class="form-control" id="comprimento" name="comprimento"
                       placeholder="Insira o comprimento em CM">
@@ -58,22 +58,27 @@
                   <div class="col">
                     <form>
                       <div class="form-row align-items-center">
-                        <div class="col-auto">
+                        <div class="col-auto mt-3">
                           <label for="inlineFormCustomSelect">Tipo de esforço</label>
                           <select class="form-control mr-sm-1" id="inlineFormCustomSelect">
                             <option value="1">Compressão</option>
                             <option value="2">Tração</option>
                           </select>
                         </div>
-                        <div class="col text-right mt-4">
+                        <div class="col-auto text-right mt-5">
                           <button type="submit" class="btn btn-primary">Adicionar</button>
+                        </div>
+                        <div class="col-auto text-right mt-5">
+                          <button type="submit" class="btn btn-secondary">Remover</button>
                         </div>
                       </div>
                     </form>
-
                   </div>
-
                 </div>
+
+
+
+
               </div>
               <button type="submit" class="btn btn-primary">Criar</button>
             </div>
