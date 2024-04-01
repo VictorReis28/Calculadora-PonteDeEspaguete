@@ -1,73 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Faça aqui os calculos de sua ponte!</title>
-    {% load static %}
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/ponte.css' %}"
-    />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="{% static 'icons/ponte.ico' %}"
-    />
-  </head>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Faça aqui os calculos de sua ponte!</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/ponte.css' %}" />
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'icons/ponte.ico' %}" />
+</head>
+
+<body>
+
   <body>
     <nav class="navbar navbar-dark bg-primary navbar-expand-lg rounded-bottom">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}">
-          <img
-            src="{% static 'icons/ponte.ico' %}"
-            alt="Logo"
-            width="80"
-            height="80"
-            class="d-inline-block align-text-top"
-        /></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+          <img src="{% static 'icons/ponte.ico' %}" alt="Logo" width="80" height="80"
+            class="d-inline-block align-text-top" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="{% url 'home' %}"
-                >Início</a
-              >
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Início</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'resultados' %}">Resultados</a>
             </li>
-          </ul>
         </div>
-        <ul>
-          <button class="btn btn-primary" type="button">Login</button>
-          <button class="btn btn-primary" type="button">Registrar-se</button>
+        <button class="btn btn-primary" type="button">Login</button>
+        <button class="btn btn-primary" type="button">Registrar-se</button>
         </ul>
       </div>
     </nav>
-
     <section>
-      <h1>1</h1>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Criar nova ponte</h5>
+                <p class="card-text">Crie suas barras para realizar os cálculos</p>
+                <div class="mb-3">
+                  <label for="nome" class="form-label">Nome da ponte</label>
+                  <input type="text" class="form-control" id="nome" name="nome" required>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label for="comprimento" class="form-label">Comprimento da barra</label>
+                    <div class="input-group input-group-sm mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">cm</span>
+                      </div>
+                      <input type="text" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <label for="comprimento" class="form-label">Tipo de esforço</label>
+                    <form>
+                      <div class="form-row align-items-center">
+                        <div class="col-auto my-1">
+                          <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <option selected>Selecione</option>
+                            <option value="1">Tipo C</option>
+                            <option value="2">Tipo T</option>
+                          </select>
+                        </div>
+                        <div class="col-auto my-1">
+                          <button type="submit" class="btn btn-primary">Adicionar</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Criar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
     </section>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
   </body>
+
 </html>
