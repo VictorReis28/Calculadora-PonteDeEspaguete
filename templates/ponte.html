@@ -39,7 +39,7 @@
     <section>
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-md-6">
+          <div class="col-md-7">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Criar nova ponte</h5>
@@ -50,22 +50,19 @@
                 </div>
                 <div class="row">
                   <div class="col">
-                    <label for="comprimento" class="form-label">Comprimento da barra (CM)</label>
-                    <input type="number" class="form-control">
-                    <div class="input-group-append">
-                    </div>
+                    <label for="comprimento">Comprimento da barra</label>
+                    <input type="number" class="form-control" id="comprimento" name="comprimento"
+                      placeholder="Insira o comprimento em CM">
                   </div>
 
                   <div class="col">
-                    <label for="comprimento" class="form-label">Tipo de esforço</label>
                     <form>
                       <div class="form-row align-items-center">
                         <div class="col-auto my-1">
-                          <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                          <label for="inlineFormCustomSelect">Tipo de esforço</label>
                           <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                            <option selected>Selecione</option>
-                            <option value="1">Tipo C</option>
-                            <option value="2">Tipo T</option>
+                            <option value="1">Compressão</option>
+                            <option value="2">Tração</option>
                           </select>
                         </div>
                         <div class="col-auto my-1">
