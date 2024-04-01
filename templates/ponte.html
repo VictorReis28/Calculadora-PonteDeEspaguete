@@ -36,6 +36,7 @@
         </ul>
       </div>
     </nav>
+
     <section>
       <div class="container">
         <div class="row justify-content-center">
@@ -48,30 +49,38 @@
                   <label for="nome" class="form-label">Nome da ponte</label>
                   <input type="text" class="form-control" id="nome" name="nome" required>
                 </div>
-                <div class="row">
-                  <div class="col">
-                    <label for="comprimento">Comprimento da barra</label>
-                    <input type="number" class="form-control" id="comprimento" name="comprimento"
-                      placeholder="Insira o comprimento em CM">
+                <div class="Allrows" id="rows">
+                  <div class="row">
+                    <div class="col-auto mt-3">
+                      <label for="comprimento">Comprimento da barra</label>
+                      <input type="number" class="form-control" id="comprimento" name="comprimento"
+                        placeholder="Insira o comprimento em CM">
+                    </div>
+
+                    <div class="col">
+                      <form>
+                        <div class="form-row align-items-center">
+                          <div class="col-auto mt-3">
+                            <label for="inlineFormCustomSelect">Tipo de esforço</label>
+                            <select class="form-control mr-sm-1" id="inlineFormCustomSelect">
+                              <option value="1">Compressão</option>
+                              <option value="2">Tração</option>
+                            </select>
+                          </div>
+                          <div class="col-auto text-right mt-5">
+                            <button id="btnAdicionar" type="submit" class="btn btn-primary"
+                              onclick="cloneContainer()">Adicionar</button>
+                          </div>
+                          <div class="col-auto text-right mt-5">
+                            <button id="btnRemover" type="submit" class="btn btn-secondary">Remover</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
                   </div>
 
-                  <div class="col">
-                    <form>
-                      <div class="form-row align-items-center">
-                        <div class="col-auto">
-                          <label for="inlineFormCustomSelect">Tipo de esforço</label>
-                          <select class="form-control mr-sm-1" id="inlineFormCustomSelect">
-                            <option value="1">Compressão</option>
-                            <option value="2">Tração</option>
-                          </select>
-                        </div>
-                        <div class="col text-right mt-4">
-                          <button type="submit" class="btn btn-primary">Adicionar</button>
-                        </div>
-                      </div>
-                    </form>
 
-                  </div>
+
 
                 </div>
               </div>
@@ -86,6 +95,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
+    <script src="{% static 'js/Ponte.js' %}"></script>
   </body>
 
 </html>
