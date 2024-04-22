@@ -1,141 +1,120 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Faça aqui os calculos de sua ponte!</title>
-  {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/ponte.css' %}" />
-  <link rel="shortcut icon" type="image/x-icon" href="{% static 'icons/ponte.ico' %}" />
-</head>
-
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Faça aqui os calculos de sua ponte!</title>
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/ponte.css' %}"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{% static 'icons/ponte.ico' %}"
+    />
+  </head>
 
   <body>
     <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}">
-          <img src="{% static 'icons/ponte.ico' %}" alt="Logo" width="80" height="80"
-            class="d-inline-block align-text-top" /></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <img
+            src="{% static 'icons/ponte.ico' %}"
+            alt="Logo"
+            width="80"
+            height="80"
+            class="d-inline-block align-text-top"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Início</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{% url 'home' %}"
+                >Início</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'resultados' %}">Resultados</a>
+              <a class="nav-link" href="">Resultados</a>
             </li>
+          </ul>
         </div>
         <button class="btn btn-primary" type="button">Login</button>
         <button class="btn btn-primary" type="button">Registrar-se</button>
-        </ul>
       </div>
     </nav>
 
-
-    <nav style="background-color: #EB6864 !important; text-align: center;" class="navbar navbar-dark bg-secondary navbar-expand rounded-bottom p-1">
+    <nav
+      style="background-color: #eb6864 !important; text-align: center"
+      class="navbar navbar-dark bg-secondary navbar-expand rounded-bottom p-1"
+    >
       <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown2"
+          aria-controls="navbarNavDropdown2"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown2">
           <ul class="navbar-nav">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-              <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                    <li class="nav-item">
-                      <a class="nav-link" href="#"></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Selecione a ponte
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">PONTES</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Selecione a ponte
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">PONTES</a></li>
+              </ul>
+            </li>
+          </ul>
         </div>
         <button class="btn btn-outline-light" type="button">Nova ponte</button>
-        </ul>
       </div>
     </nav>
 
-
-
-    <section>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-7">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Criar nova ponte</h5>
-                <p class="card-text">Crie suas barras para realizar os cálculos</p>
-                <div class="mb-3">
-                  <label for="nome" class="form-label">Nome da ponte</label>
-                  <input type="text" class="form-control" id="nome" name="nome" required>
-                </div>
-                <div class="Allrows" id="rows">
-                  <div class="row">
-                    <div class="col-auto mt-3">
-                      <label for="comprimento">Comprimento da barra</label>
-                      <input type="number" class="form-control" id="comprimento" name="comprimento"
-                        placeholder="Insira o comprimento em CM">
-                    </div>
-
-                    <div class="col">
-                      <form>
-                        <div class="form-row align-items-center">
-                          <div class="col-auto mt-3">
-                            <label for="inlineFormCustomSelect">Tipo de esforço</label>
-                            <select class="form-control mr-sm-1" id="inlineFormCustomSelect">
-                              <option value="1">Compressão</option>
-                              <option value="2">Tração</option>
-                            </select>
-                          </div>
-                          <div class="col-auto text-right mt-5">
-                            <button id="btnAdicionar" type="submit" class="btn btn-primary"
-                              onclick="cloneContainer()">Adicionar</button>
-                          </div>
-                          <div class="col-auto text-right mt-5">
-                            <button id="btnRemover" type="submit" class="btn btn-secondary">Remover</button>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-
-
-
-
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary ">Criar</button>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <!-- Conteúdo do card -->
             </div>
           </div>
         </div>
       </div>
-      </div>
-    </section>
+    </div>
 
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"
+    ></script>
     <script src="{% static 'js/Ponte.js' %}"></script>
   </body>
-
 </html>
