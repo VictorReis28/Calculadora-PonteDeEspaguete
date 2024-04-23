@@ -4,6 +4,7 @@ from django.db import models
 
 class barra(models.Model):
     id_barra = models.AutoField(primary_key=True)
+    nomee = models.CharField(max_length=50)
     cm = models.FloatField()
     esforco_interno = models.FloatField()
     tipo = models.CharField(max_length=5)
