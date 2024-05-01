@@ -13,21 +13,22 @@
     <link
       rel="shortcut icon"
       type="image/x-icon"
-      href="{% static 'icons/ponte.ico' %}"
+      href="{% static 'icons/altponte.ico' %}"
     />
   </head>
 
   <body>
     {% comment %} Navbar 1 COMEÇO {% endcomment %}
-    <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+    <nav style="background-color: #1e2474" class="navbar navbar-dark bg-primary navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}">
+        <a class="navbar-brand" href="{% url 'index' %} ">
           <img
-            src="{% static 'icons/ponte.ico' %}"
+            src="{% static 'icons/altponte.ico' %}"
             alt="Logo"
             width="80"
             height="80"
             class="d-inline-block align-text-top"
+            style="filter: brightness(1.0)"
           />
         </a>
         <button
@@ -47,7 +48,7 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href="{% url 'home' %}"
+                href="{% url 'index' %}"
                 >Início</a
               >
             </li>
@@ -56,15 +57,15 @@
             </li>
           </ul>
         </div>
-        <button class="btn btn-primary" type="button">Login</button>
-        <button class="btn btn-primary" type="button">Registrar-se</button>
+        <button class="btn btn-primary ml-2 mr-2" type="button">Login</button>
+        <button class="btn btn-primary ml-2 mr-2" type="button">Registrar-se</button>
       </div>
     </nav>
     {% comment %} Navbar 1 FIM{% endcomment %} {% comment %} Navbar 2
     COMEÇO{%endcomment %}
 
     <nav
-      style="background-color: #eb6864 !important; text-align: center"
+      style="background-color: #2946c7 !important; text-align: center"
       class="navbar navbar-dark bg-secondary navbar-expand rounded-bottom p-1"
     >
       <div class="container-fluid">
@@ -91,8 +92,12 @@
               >
                 Selecione a ponte
               </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">PONTES</a></li>
+              <ul class="dropdown-menu" style="background-color: #27292c; color: #dee7ff;">
+                {% for ponte in pontes %}
+                  <li><a style="background-color: #27292c; color: #dee7ff;" class="dropdown-item" href="">{{ ponte.nome }}</a></li>
+                {% empty %}
+                  <li><a style="background-color: #27292c; color: #dee7ff;" class="dropdown-item" href="">Nenhuma Ponte</a></li>
+                {% endfor %}
               </ul>
             </li>
           </ul>
@@ -102,54 +107,66 @@
     </nav>
     {% comment %} Navbar 2 FIM {% endcomment %}
 
-    <div class="container">
-      <div class="row">
-        <div class="col-auto text-left">
-          <div class="align-self-start font-weight-bold">Criar ponte</div>
-          <div class="align-self-center font-weight-bold">
+    <div class="container-fluid">
+      <div class="row p-4">
+        <div class="col-auto text-left border-right">
+          <div class="align-self-start font-weight-bold p-2">Barras</div>
+          <div class="align-self-center font-weight-bold p-2">
             Nome da Barra
             <input
+              style="background-color: #27292c; color: #5d6269;"
               type="text"
-              class="form-control"
+              class="form-control mt-1 mb-1"
               id="nomeBarra"
               placeholder="Nome da Barra"
             />
           </div>
-          <div class="align-self-center font-weight-bold">
+          <div class="align-self-center font-weight-bold p-2">
             Comprimento da Barra
             <input
+              style="background-color: #27292c; color: #5d6269;"
               type="text"
-              class="form-control"
+              class="form-control mt-1 mb-1"
               id="ComprimentoBarra"
               placeholder="Comprimento da Barra"
             />
           </div>
-          <div class="align-self-center font-weight-bold">
+          <div class="align-self-center font-weight-bold p-2">
             Esforço Interno
             <input
+              style="background-color: #27292c; color: #5d6269;"
               type="number"
-              class="form-control"
+              class="form-control mt-1 mb-1"
               id="EsforcoInterno"
               placeholder="Esforço Interno"
             />
           </div>
-          <div class="align-self-center font-weight-bold">
-            Esforço:
-            <select class="form-select" id="TipoEsforco">
+          <div class="align-self-center font-weight-bold p-2">
+            Esforço
+            <select class="form-control mt-1 mb-1" id="TipoEsforco" style="background-color: #27292c; color: #5d6269;">
               <option value="T">Tração</option>
               <option value="C">Compressão</option>
             </select>
           </div>
-          <div class="align-self-center">
-            <button type="button" class="btn btn-primary">Adicionar</button>
+          <div class="align-self-center p-2 d-flex justify-content-center">
+            <button type="button" class="btn btn-primary ">Adicionar</button>
           </div>
-
-          <div class="align-self-end">
+          <div class="align-self-center font-weight-bold p-2 border-top">
+            Peso Linear
+            <input
+              style="background-color: #27292c; color: #5d6269;"
+              type="text"
+              class="form-control mt-1 mb-1"
+              id="nomeBarra"
+              placeholder="Nome da Barra"
+            />
+          </div>
+          <div class="align-self-end p-2 d-flex justify-content-center">
             <button type="button" class="btn btn-primary">Calcular</button>
           </div>
         </div>
-        <div class="col mx-auto text-left">
-          <table class="table table-bordered">
+        <div class="col mx-auto text-center ">
+          <table class="table table-bordered" style="background-color: #27292c; color: #dee7ff;">
             <thead>
               <tr>
                 <th scope="col">Nome da Barra</th>
@@ -161,16 +178,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="text-center">id</td>
-                <td class="text-center">100</td>
-                <td class="text-center">T</td>
-                <td class="text-center">500</td>
-                <td class="text-center">1000</td>
-                <td class="text-center">
-                  <button class="btn btn-danger" type="button">Excluir</button>
-                </td>
-              </tr>
+              {% for barra in barras %}
+                <tr>
+                  <td class="text-center">id</td>
+                  <td class="text-center">100</td>
+                  <td class="text-center">T</td>
+                  <td class="text-center">500</td>
+                  <td class="text-center">1000</td>
+                  <td class="text-center">
+                    <button class="btn btn-danger" type="button">Excluir</button>
+                  </td>
+                </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>

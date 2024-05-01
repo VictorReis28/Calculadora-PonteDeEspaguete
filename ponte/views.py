@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from .models import Ponte
 
 # Create your views here.
 
-def home(request):
-    return render(request, 'ponte.html')
+def index(request):
+    pontes = Ponte.objects.order_by('id')
+    context = {'pontes': pontes}
+    return render(request, 'ponte.html', context)
 
 
 def Login_Register(request):

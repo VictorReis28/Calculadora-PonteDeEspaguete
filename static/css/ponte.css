@@ -14,7 +14,8 @@
     --white: #fff;
     --gray: #777;
     --gray-dark: #333;
-    --primary: #ac2614;
+    --primary: #1e2474;
+/*    --primary: #ac2614; */
     --secondary: #777;
     --success: #22B24C;
     --info: #369;
@@ -63,9 +64,9 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #222;
+    color: #dee7ff;
     text-align: left;
-    background-color: #fff;
+    background-color: #0f1011;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -161,13 +162,13 @@ sup {
 }
 
 a {
-    color: #ac2614;
+    color: #1e2474;
     text-decoration: none;
     background-color: transparent;
 }
 
 a:hover {
-    color: #67170c;
+    color: #131747;
     text-decoration: underline;
 }
 
@@ -2681,14 +2682,14 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #ac2614;
-    border-color: #ac2614;
+    background-color: #1e2474;
+    border-color: #1e2474;
 }
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #8a1e10;
-    border-color: #7e1c0f;
+    background-color: #131747;
+    border-color: #131747;
 }
 
 .btn-primary:focus,
@@ -6913,7 +6914,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-    background-color: #ac2614 !important;
+    background-color: #1e2474 !important;
 }
 
 a.bg-primary:hover,
