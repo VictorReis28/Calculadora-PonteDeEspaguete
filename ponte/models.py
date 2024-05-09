@@ -17,6 +17,7 @@ class Barra(models.Model):
     esforco_interno = models.FloatField()
     tipo = models.CharField(max_length=5)
     n_fios = models.FloatField()
+    n_fios_revisados = models.FloatField()
 
     class Meta:
         verbose_name_plural = 'Barras'
