@@ -1,14 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Faça aqui os calculos de sua ponte!</title>
-    {% load static %}
     <link
       rel="stylesheet"
       type="text/css"
-      href="{% static 'css/ponte.css' %}"
+      href="{% static 'css/styles.css' %}"
     />
     <link
       rel="shortcut icon"
@@ -69,6 +69,7 @@
       class="navbar navbar-dark bg-secondary navbar-expand rounded-bottom p-1"
     >
       <div class="container-fluid">
+        
         <button
           class="navbar-toggler"
           type="button"
@@ -84,6 +85,7 @@
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
               <a
+                id="selected-bridge"
                 class="nav-link dropdown-toggle"
                 href="#"
                 role="button"
@@ -94,23 +96,58 @@
               </a>
               <ul class="dropdown-menu" style="background-color: #27292c; color: #dee7ff;">
                 {% for ponte in pontes %}
-                  <li><a style="background-color: #27292c; color: #dee7ff;" class="dropdown-item" href="">{{ ponte.nome }}</a></li>
+                  <li type="button" role="button" style="background-color: #27292c; color: #dee7ff;" class="dropdown-item ponte" data_ponte="{{ponte.id}}" id="ponte{{ ponte.id }}" onclick="infoponte('{{ ponte.nome }}')">{{ ponte.nome }}</li>
                 {% empty %}
-                  <li><a style="background-color: #27292c; color: #dee7ff;" class="dropdown-item" href="">Nenhuma Ponte</a></li>
+                  <li style="background-color: #27292c; color: #dee7ff;" class="dropdown-item">Nenhuma Ponte</li>
                 {% endfor %}
               </ul>
             </li>
           </ul>
+          <button id="novaponte" class="btn btn-outline-light" type="button" onclick="openmodal()">Editar</button>
         </div>
-        <button class="btn btn-outline-light" type="button">Nova ponte</button>
+        
+        <button id="novaponte" class="btn btn-outline-light" type="button" onclick="openmodal()">Nova ponte</button>
       </div>
     </nav>
+    <div class="modal criar" tabindex="-1" role="dialog" id="popupnovaponte">
+      <div class="modal-dialog" role="document" >
+        <div class="modal-content" style="background-color: #27292c;">
+          <form class="align-self-center col p-0 m-0" action="{% url 'index' %}" method='post'>
+          <div class="modal-header">
+            <h5 class="modal-title">Crie sua Ponte</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closemodal()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+          <div class="modal-body">
+            
+              {% csrf_token %}
+              <div>
+                {{ form_ponte.nome.label }}
+              </div>
+              <div>
+                {{ form_ponte.nome }}
+              </div>
+              
+          </div>
+          <div class="modal-footer">
+            <button class="align-self-center btn btn-primary" name="submit">Criar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closemodal()">Cancelar</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
     {% comment %} Navbar 2 FIM {% endcomment %}
 
     <div class="container-fluid">
       <div class="row p-4">
         <div class="col-auto text-left border-right">
           <div class="align-self-start font-weight-bold p-2">Barras</div>
+          <form action="{% url 'index' %}" method="post">
+            {% csrf_token %}
           <div class="align-self-center font-weight-bold p-2">
             Nome da Barra
             <input
@@ -124,7 +161,7 @@
           <div class="align-self-center font-weight-bold p-2">
             Comprimento da Barra
             <input
-              style="background-color: #27292c; color: #5d6269;"
+              
               type="text"
               class="form-control mt-1 mb-1"
               id="ComprimentoBarra"
@@ -151,13 +188,14 @@
           <div class="align-self-center p-2 d-flex justify-content-center">
             <button type="button" class="btn btn-primary ">Adicionar</button>
           </div>
+          </form>
           <div class="align-self-center font-weight-bold p-2 border-top">
             Peso Linear
             <input
               style="background-color: #27292c; color: #5d6269;"
               type="text"
               class="form-control mt-1 mb-1"
-              id="nomeBarra"
+              id="PesoLinear"
               placeholder="Nome da Barra"
             />
           </div>
@@ -166,7 +204,7 @@
           </div>
         </div>
         <div class="col mx-auto text-center ">
-          <table class="table table-bordered" style="background-color: #27292c; color: #dee7ff;">
+          <table id="table-barras" class="table table-bordered" style="background-color: #27292c; color: #dee7ff;">
             <thead>
               <tr>
                 <th scope="col">Nome da Barra</th>
@@ -178,29 +216,21 @@
               </tr>
             </thead>
             <tbody>
-              {% for barra in barras %}
-                <tr>
-                  <td class="text-center">id</td>
-                  <td class="text-center">100</td>
-                  <td class="text-center">T</td>
-                  <td class="text-center">500</td>
-                  <td class="text-center">1000</td>
-                  <td class="text-center">
-                    <button class="btn btn-danger" type="button">Excluir</button>
-                  </td>
-                </tr>
-              {% endfor %}
             </tbody>
           </table>
         </div>
       </div>
     </div>
 
+    
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script src="{% static 'js/Ponte.js' %}"></script>
+    <script src="{% static 'js/jquery/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    
+    
   </body>
 </html>
