@@ -1,0 +1,42 @@
+<nav style="background-color: #2946c7 !important; text-align: center"
+    class="navbar navbar-dark bg-secondary navbar-expand rounded-bottom p-1">
+    <div class="container-fluid">
+        <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown2"
+            aria-controls="navbarNavDropdown2"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse"
+            id="navbarNavDropdown2">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Selecione a ponte
+                    </a>
+                    <ul class="dropdown-menu"
+                        style="background-color: #27292c; color: #dee7ff;">
+                        {% for ponte in pontes %}
+                        <li><a style="background-color: #27292c; color: #dee7ff;"
+                                class="dropdown-item"
+                                href="">{{ ponte.nome }}</a></li>
+                        {% empty %}
+                        <li><a style="background-color: #27292c; color: #dee7ff;"
+                                class="dropdown-item"
+                                href="">Nenhuma Ponte</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <button class="btn btn-outline-light"
+            type="button">Nova ponte</button>
+    </div>
+</nav>

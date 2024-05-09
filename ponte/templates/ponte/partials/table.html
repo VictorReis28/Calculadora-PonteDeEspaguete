@@ -1,0 +1,30 @@
+<div class="col mx-auto text-center ">
+    <table class="table table-bordered"
+        style="background-color: #27292c; color: #dee7ff;">
+        <thead>
+            <tr>
+                <th scope="col">Nome da Barra</th>
+                <th scope="col">Comprimento</th>
+                <th scope="col">Tipo de Esforço</th>
+                <th scope="col">Esforço Interno</th>
+                <th scope="col">N° de Fios</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for barra in barras %}
+            <tr>
+                <td class="text-center">id</td>
+                <td class="text-center">100</td>
+                <td class="text-center">T</td>
+                <td class="text-center">500</td>
+                <td class="text-center">1000</td>
+                <td class="text-center">
+                    <button class="btn btn-danger"
+                        type="button">Excluir</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
