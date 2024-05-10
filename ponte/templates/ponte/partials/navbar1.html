@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg p-0 w-100">
     <div class="container-fluid">
         <a class="navbar-brand"
             href="{% url 'index' %} ">
@@ -10,26 +10,25 @@
                 class="d-inline-block align-text-top"
                 style="filter: brightness(1.0)" />
         </a>
-        <button class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse"
             id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="navbar-brand mb-0 h1 font-weight-bold" href="{% url "index" %}">CalBridge</a>
+                    <a class="navbar-brand mb-0 h1" href="{% url "index" %}">CallBridge</a>
                 </li>
             </ul>
         </div>
+
+        <div class="container-fluid d-flex justify-content-center padding">
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                <button class="btn btn-dark" type="submit">Pesquisar</button>
+            </form>
+        </div>
+
         <button class="btn btn-primary ml-2 mr-2 font-weight-bold"
             type="button">Login</button>
         <button class="btn btn-primary ml-2 mr-2 font-weight-bold"
-            type="button">Registrar-se</button>
+            type="button">Registrar</button>
     </div>
 </nav>

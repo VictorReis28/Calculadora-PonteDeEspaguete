@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+{% include "ponte/partials/head.html" %}
+<title>{% block title %}{% endblock title %} CallBridge</title>
+</head>
+<body>
+    {% include "ponte/partials/navbar1.html" %}
+
+    <main class="main-content-container">
+    {% block content %}{% endblock content %}
+    </main>
+    
+</body>
