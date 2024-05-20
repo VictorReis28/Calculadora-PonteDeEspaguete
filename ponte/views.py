@@ -4,9 +4,8 @@ from .models import Ponte
 # Create your views here.
 
 def index(request):
-    pontes = Ponte.objects.order_by('id')
-    context = {'pontes': pontes}
-    return render(request, 'ponte/pages/home.html', context)
+    pontes = Ponte.objects.all().order_by('-id')
+    return render(request, 'ponte/pages/home.html', context={'pontes': pontes})
 
 
 def Login_Register(request):

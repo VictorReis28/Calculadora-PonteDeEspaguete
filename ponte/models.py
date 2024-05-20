@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 
 tipos = {'T': 'Tração', 'C': 'Compressão'}
 class Ponte(models.Model):
-    models.ForeignKey(User, on_delete=models.CASCADE)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
     nome_ponte = models.CharField(max_length=50)
     peso_linear = models.FloatField(null=True, blank=True)
     peso_metade = models.FloatField(null=True, blank=True)
@@ -18,7 +19,7 @@ class Ponte(models.Model):
         return self.nome_ponte
 
 class Barra(models.Model):
-    ponte = models.ForeignKey(Ponte, on_delete=models.CASCADE)
+    ponte = models.ForeignKey(Ponte, on_delete=models.CASCADE, related_name='barras')
     nome = models.CharField(max_length=50)
     cm = models.FloatField(null=True)
     esforco_interno = models.FloatField(null=True)

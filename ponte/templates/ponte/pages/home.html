@@ -7,10 +7,13 @@
 {% block content %}
 
 <div class="main-content main-content-list container">    
-{% include 'ponte/partials/pontes.html' %}
-{% include 'ponte/partials/pontes.html' %}
-{% include 'ponte/partials/pontes.html' %}
+
+{% for ponte in pontes %}
+    {% include 'ponte/partials/pontes.html' %}
+{% endfor %}
+{% include 'ponte/partials/newponte.html' %}
 </div>  
+
 {% endblock content %}
 
 {% include 'ponte/partials/scripts.html' %}
