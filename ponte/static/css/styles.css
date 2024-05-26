@@ -45,6 +45,8 @@ html {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+
+
 article,
 aside,
 figcaption,
@@ -572,6 +574,41 @@ pre code {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+}
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {
+    html{
+        font-size: 10px;
+    }
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    html{
+        font-size: 12px;
+    }
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+    html{
+        font-size: 14px;
+    }
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    html{
+        font-size: 9px;
+    }
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+    html{
+        font-size: 7px;
+    }
 }
 
 @media (min-width: 576px) {
@@ -1804,7 +1841,7 @@ pre code {
 .table {
     width: 100%;
     margin-bottom: 1rem;
-    color: #222;
+    color: #dee7ff;
 }
 
 .table th,
@@ -1854,8 +1891,8 @@ pre code {
 }
 
 .table-hover tbody tr:hover {
-    color: #222;
-    background-color: rgba(0, 0, 0, 0.075);
+    color: #dee7ff;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .table-primary,
@@ -2183,11 +2220,11 @@ pre code {
 }
 
 .form-control:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #eb6654;
+    background-color: #27292c; 
+    color: #5d6269;
+    border-color: #4b68c7;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(172, 38, 20, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(20, 73, 172, 0.25);
 }
 
 .form-control::placeholder {
@@ -2197,7 +2234,7 @@ pre code {
 
 .form-control:disabled,
 .form-control[readonly] {
-    background-color: #eee;
+    background-color: #27292c;
     opacity: 1;
 }
 
@@ -2209,8 +2246,8 @@ input[type="month"].form-control {
 }
 
 select.form-control:focus::-ms-value {
-    color: #495057;
-    background-color: #fff;
+    background-color: #27292c; 
+    color: #5d6269;
 }
 
 .form-control-file,
@@ -2892,20 +2929,17 @@ fieldset:disabled a.btn {
 .btn-danger {
     color: #fff;
     background-color: #F57A00;
-    border-color: #F57A00;
 }
 
 .btn-danger:hover {
     color: #fff;
     background-color: #cf6700;
-    border-color: #c26100;
 }
 
 .btn-danger:focus,
 .btn-danger.focus {
     color: #fff;
     background-color: #cf6700;
-    border-color: #c26100;
     box-shadow: 0 0 0 0.2rem rgba(247, 142, 38, 0.5);
 }
 
@@ -3880,10 +3914,10 @@ input[type="button"].btn-block {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
     text-align: center;
     white-space: nowrap;
-    background-color: #eee;
+    background-color: #27292c; 
+    color: #5d6269;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
 }

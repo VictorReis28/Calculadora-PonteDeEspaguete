@@ -13,7 +13,7 @@
     <link
       rel="shortcut icon"
       type="image/x-icon"
-      href="{% static 'icons/altponte.ico' %}"
+      href="{% static 'icons/logotipo.ico' %}"
     />
   </head>
 
@@ -23,42 +23,25 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'index' %} ">
           <img
-            src="{% static 'icons/altponte.ico' %}"
+            src="{% static 'icons/logotipo.png' %}"
             alt="Logo"
-            width="80"
-            height="80"
+            height="40"
+            class="d-inline-block align-text-top"
+            style="filter: brightness(1.0)"
+          />
+          <img
+            src="{% static 'icons/marca.png' %}"
+            alt="Logo"
+            height="40"
             class="d-inline-block align-text-top"
             style="filter: brightness(1.0)"
           />
         </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="{% url 'index' %}"
-                >Início</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">Resultados</a>
-            </li>
-          </ul>
-        </div>
-        <button class="btn btn-primary ml-2 mr-2" type="button">Login</button>
-        <button class="btn btn-primary ml-2 mr-2" type="button">Registrar-se</button>
+        <div>
+        <button class="btn btn-primary ml-1 mr-1" type="button">Login</button>
+        <button class="btn btn-primary ml-1 mr-1" type="button">Registrar-se</button>
+      </div>
       </div>
     </nav>
     {% comment %} Navbar 1 FIM{% endcomment %} {% comment %} Navbar 2
@@ -81,58 +64,57 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown2">
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a
-                id="selected-bridge"
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Selecione a ponte
-              </a>
+        <div class="collapse navbar-collapse justify-content-betwen" id="navbarNavDropdown2">
+          <div class="navbar-item dropdown ml-1 mr-1" id="ponte">
+              <button id="selected-bridge" class="dropdown-toggle btn btn-outline-light" type="button" data-bs-toggle="dropdown">
+                Selecionar a ponte
+              </button> 
               <ul class="dropdown-menu" style="background-color: #27292c; color: #dee7ff;">
                 {% for ponte in pontes %}
-                  <li type="button" role="button" style="background-color: #27292c; color: #dee7ff;" class="dropdown-item ponte" data_ponte="{{ponte.id}}" id="ponte{{ ponte.id }}" onclick="infoponte('{{ ponte.nome }}')">{{ ponte.nome }}</li>
+                  <li type="button" role="button" style="background-color: #27292c; color: #dee7ff;" class="dropdown-item ponte" data-ponte="{{ponte.id}}" id="ponte{{ ponte.id }}" pega-barra="{% url 'get-barras' %}" onclick="infoponte('{{ ponte.nome_ponte }}')">{{ ponte.nome_ponte }}</li>
                 {% empty %}
                   <li style="background-color: #27292c; color: #dee7ff;" class="dropdown-item">Nenhuma Ponte</li>
                 {% endfor %}
               </ul>
-            </li>
-          </ul>
-          <button id="novaponte" class="btn btn-outline-light" type="button" onclick="openmodal()">Editar</button>
+            </div>
+          <button id="novaponte" class="btn btn-outline-light ml-1 mr-1" type="button" onclick="openmodal()">Editar</button>
         </div>
-        
-        <button id="novaponte" class="btn btn-outline-light" type="button" onclick="openmodal()">Nova ponte</button>
+        <div>
+        <button id="novaponte" class="btn btn-outline-light ml-1 mr-1" type="button" onclick="openmodal()">Nova ponte</button>
+        </div>
       </div>
     </nav>
     <div class="modal criar" tabindex="-1" role="dialog" id="popupnovaponte">
       <div class="modal-dialog" role="document" >
-        <div class="modal-content" style="background-color: #27292c;">
+        <div class="modal-content" style="background-color: #0f1011;">
           <form class="align-self-center col p-0 m-0" action="{% url 'index' %}" method='post'>
           <div class="modal-header">
             <h5 class="modal-title">Crie sua Ponte</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closemodal()">
-              <span aria-hidden="true">&times;</span>
+              <span style="color: rgb(255, 255, 255);" aria-hidden="true">&times;</span>
             </button>
           </div>
           
-          <div class="modal-body">
+          <div class="modal-body font-weight-bold">
             
               {% csrf_token %}
               <div>
-                {{ form_ponte.nome.label }}
+                <Label for="nome-ponte">Nome da Ponte</Label>
               </div>
               <div>
-                {{ form_ponte.nome }}
+                <input
+                  style="background-color: #27292c; color: #5d6269;"
+                  type="text"
+                  class="form-control mt-1 mb-1"
+                  id="nome-ponte"
+                  name="nome_ponte"
+                  placeholder="Nome da Ponte"
+                />
               </div>
               
           </div>
           <div class="modal-footer">
-            <button class="align-self-center btn btn-primary" name="submit">Criar</button>
+            <button class="align-self-center btn btn-primary" name="submit" type="submit">Criar</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closemodal()">Cancelar</button>
           </div>
         </form>
@@ -142,77 +124,82 @@
 
     {% comment %} Navbar 2 FIM {% endcomment %}
 
-    <div class="container-fluid">
-      <div class="row p-4">
-        <div class="col-auto text-left border-right">
+    <div class="container-fluid d-flex flex-column">
+      <div class="row p-4 d-flex justify-content-center">
+
+        <div class="col-auto text-left border-right mb-3">
+        <!--Painel de Adicionar e Calcular-->
           <div class="align-self-start font-weight-bold p-2">Barras</div>
-          <form action="{% url 'index' %}" method="post">
-            {% csrf_token %}
+          <form id="addTodoForm">
           <div class="align-self-center font-weight-bold p-2">
-            Nome da Barra
+            <label for="nome-barra">Nome da Barra</label>
             <input
               style="background-color: #27292c; color: #5d6269;"
               type="text"
               class="form-control mt-1 mb-1"
-              id="nomeBarra"
+              id="nome-barra"
               placeholder="Nome da Barra"
             />
           </div>
           <div class="align-self-center font-weight-bold p-2">
-            Comprimento da Barra
+            <label for="comprimento-barra">Comprimento da Barra</label>
             <input
-              
+              style="background-color: #27292c; color: #5d6269;"
               type="text"
               class="form-control mt-1 mb-1"
-              id="ComprimentoBarra"
+              id="comprimento-barra"
               placeholder="Comprimento da Barra"
             />
           </div>
           <div class="align-self-center font-weight-bold p-2">
-            Esforço Interno
+            <label for="esforco-interno">Esforço Interno</label>
             <input
               style="background-color: #27292c; color: #5d6269;"
               type="number"
               class="form-control mt-1 mb-1"
-              id="EsforcoInterno"
+              id="esforco-interno"
               placeholder="Esforço Interno"
             />
           </div>
           <div class="align-self-center font-weight-bold p-2">
-            Esforço
-            <select class="form-control mt-1 mb-1" id="TipoEsforco" style="background-color: #27292c; color: #5d6269;">
+            <label for="tipo-esforco">Tipo de Esforço</label>
+            <select class="form-control mt-1 mb-1" id="tipo-esforco" style="background-color: #27292c; color: #5d6269;">
               <option value="T">Tração</option>
               <option value="C">Compressão</option>
             </select>
           </div>
           <div class="align-self-center p-2 d-flex justify-content-center">
-            <button type="button" class="btn btn-primary ">Adicionar</button>
+            <button type="submit" class="btn btn-primary ">Adicionar</button>
           </div>
           </form>
-          <div class="align-self-center font-weight-bold p-2 border-top">
-            Peso Linear
-            <input
-              style="background-color: #27292c; color: #5d6269;"
-              type="text"
-              class="form-control mt-1 mb-1"
-              id="PesoLinear"
-              placeholder="Nome da Barra"
-            />
-          </div>
-          <div class="align-self-end p-2 d-flex justify-content-center">
-            <button type="button" class="btn btn-primary">Calcular</button>
-          </div>
+          <form>
+            <div class="align-self-center font-weight-bold p-2 border-top">
+              <label for="peso-linear">Peso Linear</label>
+              <input
+                style="background-color: #27292c; color: #5d6269;"
+                type="text"
+                class="form-control mt-1 mb-1"
+                id="peso-linear"
+                placeholder="Peso Linear"
+              />
+            </div>
+            <div class="align-self-end p-2 d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary">Calcular</button>
+            </div>
+          </form>
         </div>
-        <div class="col mx-auto text-center ">
-          <table id="table-barras" class="table table-bordered" style="background-color: #27292c; color: #dee7ff;">
+        <div class="col-sm mx-auto text-center table-responsive">
+        <!--Painel que mostra as barras-->
+          <table id="table-barras" class="table table-dark table-hover" style="background-color: #27292c; color: #dee7ff; overflow-y:auto;">
             <thead>
               <tr>
-                <th scope="col">Nome da Barra</th>
-                <th scope="col">Comprimento</th>
-                <th scope="col">Tipo de Esforço</th>
-                <th scope="col">Esforço Interno</th>
-                <th scope="col">N° de Fios</th>
-                <th scope="col">Ações</th>
+                <th scope="col" class="align-middle">Nome da Barra</th>
+                <th scope="col" class="align-middle">Esforço Interno</th>
+                <th scope="col" class="align-middle">Tipo de Esforço</th>
+                <th scope="col" class="align-middle">Comprimento</th>
+                <th scope="col" class="align-middle">N° de Fios</th>
+                <th scope="col" class="align-middle">Revisado</th>
+                <th scope="col" class="align-middle">Ações</th>
               </tr>
             </thead>
             <tbody>
