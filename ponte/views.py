@@ -8,5 +8,4 @@ def index(request):
     return render(request, 'ponte/pages/home.html', context={'pontes': pontes})
 
 
-def Login_Register(request):
-    return render(request, 'ponte/pages/Login_Register.html')
+
