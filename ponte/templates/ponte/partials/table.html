@@ -1,6 +1,5 @@
-<div class="col mx-auto text-center ">
-    <table class="table table-bordered"
-        style="background-color: #27292c; color: #dee7ff;">
+<div class="col mx-auto text-center">
+    <table class="table table-bordered" style="background-color: #27292c; color: #dee7ff;">
         <thead>
             <tr>
                 <th scope="col">Nome da Barra</th>
@@ -14,14 +13,16 @@
         <tbody>
             {% for barra in barras %}
             <tr>
-                <td class="text-center">{{ barra.id }}</td>
+                <td class="text-center">{{ barra.nome }}</td>
                 <td class="text-center">{{ barra.cm }}</td>
                 <td class="text-center">{{ barra.tipo }}</td>
                 <td class="text-center">{{ barra.esforco_interno }}</td>
                 <td class="text-center">{{ barra.n_fios }}</td>
                 <td class="text-center">
-                    <button class="btn btn-danger"
-                        type="button">Excluir</button>
+                    <form method="post" action="{% url 'excluir_barra' username=ponte.autor.username ponte_id=ponte.id barra_id=barra.id %}">
+                        {% csrf_token %}
+                        <button class="btn btn-danger" type="submit">Excluir</button>
+                    </form>
                 </td>
             </tr>
             {% endfor %}
