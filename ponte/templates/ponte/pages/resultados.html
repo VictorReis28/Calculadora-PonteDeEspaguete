@@ -6,9 +6,18 @@
 
 {% block content %}
 <br><br>
-{% include "ponte/partials/table.html" %}
 
+<div class="container-fluid d-flex flex-column">
+  <div class="row p-4 d-flex justify-content-center">
+    <div class="col-sm-auto text-left border-right border-left mb-3">
+      {% include "ponte/partials/newbarra.html" %}
+      {% include "ponte/partials/table.html" %}
+    </div>
+  </div>
+</div>
+{% include 'ponte/partials/scripts.html' %}
 {% endblock content %}
+
 
 </body>
 </html>

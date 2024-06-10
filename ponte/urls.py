@@ -1,8 +1,7 @@
 from django.urls import path
 
 from ponte.views import index
-from ponte.views import ponte_detail
-from ponte.views import excluir_barra
+from ponte.views import ponte_detail, excluir_barra
 
 urlpatterns = [
     path('', index, name='index'),
