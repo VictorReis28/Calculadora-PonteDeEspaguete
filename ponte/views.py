@@ -112,3 +112,10 @@ def exportar_csv(request, username, ponte_id):
         writer.writerow([])
 
     return response
+
+@login_required
+def excluir_ponte(request, username, ponte_id):
+    ponte = get_object_or_404(Ponte, id=ponte_id, autor__username=username)
+    if ponte.autor == request.user:
+        ponte.delete()
+    return redirect('index')

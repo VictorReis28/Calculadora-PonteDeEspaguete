@@ -1,3 +1,10 @@
+<div class="font-weight-bold p-2" style="font-size: 1.2em;">Ponte:  <u>{{ ponte.nome_ponte }}</u>
+    <form action="{% url 'excluir_ponte' ponte.autor.username ponte.id %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-sm ml-2" style="background-color: #990000; color: #ffffff;">Excluir Ponte</button>
+    </form>
+</div>
+<div style="border-bottom: 1px solid #5d6269; margin-top: 10px; margin-bottom: 10px;"></div>
 <div class="align-self-start font-weight-bold p-2">Barras</div>
 <form id="addTodoForm"
     method="post"
