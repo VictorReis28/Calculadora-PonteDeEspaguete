@@ -26,9 +26,17 @@
             </form>
         </div>
 
-        <button class="btn btn-primary ml-2 mr-2 font-weight-bold"
-            type="button">Login</button>
-        <button class="btn btn-primary ml-2 mr-2 font-weight-bold"
-            type="button">Registrar</button>
+        {% if user.is_authenticated %}
+        <span class="navbar-text">
+            Olá, {{ user.username }}!
+        </span>
+        <form action="{% url 'logout' %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger ml-2 mr-2 font-weight-bold" role="button">Sair</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}" class="btn btn-primary ml-2 mr-2 font-weight-bold" role="button">Login</a>
+        <a href="{% url 'register' %}" class="btn btn-primary ml-2 mr-2 font-weight-bold" role="button">Registrar</a>
+    {% endif %}    
     </div>
 </nav>

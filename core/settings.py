@@ -53,6 +53,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'core.urls'
 
+LOGIN_REDIRECT_URL = '/'  # Substitua 'home' pela URL onde deseja redirecionar após login
+LOGOUT_REDIRECT_URL = '/'  # Substitua 'home' pela URL onde deseja redirecionar após logout
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

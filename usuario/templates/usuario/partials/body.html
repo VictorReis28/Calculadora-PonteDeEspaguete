@@ -3,72 +3,87 @@
         <div class="first-column">
             <h2 class="title title-primary">Seja Bem-Vindo!</h2>
             <p class="description description-primary">Já possui uma conta?</p>
-            <p class="description description-primary">
-                Faça login com suas informações pessoais
-            </p>
+            <p class="description description-primary">Faça login com suas informações pessoais</p>
             <button id="signin"
                 class="btn btn-primary">Login</button>
         </div>
         <div class="second-column">
             <h2 class="title title-second">Criar conta</h2>
-            <form class="form">
+            <form id="register-form"
+                method="post"
+                action="{% url 'register' %}"
+                class="form">
+                {% csrf_token %}
                 <label class="label-input"
                     for="">
                     <i class="far fa-user icon-modify"></i>
                     <input type="text"
-                        placeholder="Nome" />
+                        name="username"
+                        placeholder="Nome"
+                        required />
                 </label>
 
                 <label class="label-input"
                     for="">
                     <i class="far fa-envelope icon-modify"></i>
                     <input type="email"
-                        placeholder="Email" />
+                        name="email"
+                        placeholder="Email"
+                        required />
                 </label>
 
                 <label class="label-input"
                     for="">
                     <i class="fas fa-lock icon-modify"></i>
                     <input type="password"
-                        placeholder="Senha" />
+                        name="password"
+                        placeholder="Senha"
+                        required />
                 </label>
-                <button class="btn btn-second">Registrar</button>
+                <button type="submit"
+                    class="btn btn-second">Registrar</button>
             </form>
+            <div class="alert-container"></div>
         </div>
-        <!-- second column -->
     </div>
+
     <div class="content second-content">
         <div class="first-column">
             <h2 class="title title-primary">Ainda não possui uma conta?</h2>
-            <p class="description description-primary">
-                Junte-se a nós para calcularmos juntos.
-            </p>
+            <p class="description description-primary">Junte-se a nós para calcularmos juntos.</p>
             <button id="signup"
                 class="btn btn-primary">Registrar</button>
         </div>
         <div class="second-column">
             <h2 class="title title-second">Olá</h2>
-            <form class="form">
+            <form id="login-form"
+                method="post"
+                action="{% url 'login' %}"
+                class="form">
+                {% csrf_token %}
                 <label class="label-input"
                     for="">
-                    <i class="far fa-envelope icon-modify"></i>
-                    <input type="email"
-                        placeholder="Email" />
+                    <i class="far fa-user icon-modify"></i>
+                    <input type="text"
+                        name="username"
+                        placeholder="Username"
+                        required />
                 </label>
 
                 <label class="label-input"
                     for="">
                     <i class="fas fa-lock icon-modify"></i>
                     <input type="password"
-                        placeholder="Senha" />
+                        name="password"
+                        placeholder="Senha"
+                        required />
                 </label>
 
                 <a class="password"
                     href="#">Esqueceu sua senha?</a>
-                <button class="btn btn-second">Login</button>
+                <button type="submit"
+                    class="btn btn-second">Login</button>
             </form>
         </div>
-        <!-- second column -->
     </div>
-    <!-- second-content -->
 </div>
