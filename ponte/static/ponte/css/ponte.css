@@ -58,7 +58,6 @@
     margin: 10px;
 }
 
-
 .ponte-list-item:hover {
     transform: scale(1.02);
     box-shadow: -8px 8px 18px rgba(0, 0, 0, 0.25);
@@ -70,6 +69,11 @@
     align-items: center;
     padding: var(--spacing-gutter-medium);
     padding-bottom: 2rem;
+}
+
+.ponte-title a {
+    color: white; 
+    text-decoration: none;
 }
 
 .ponte-author {

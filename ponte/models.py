@@ -46,3 +46,4 @@ class Barra(models.Model):
         numero_fios = self.calcular_numero_fios()
         numero_fios_revisados = numero_fios + (numero_fios * 0.1) 
         return numero_fios_revisados
+
