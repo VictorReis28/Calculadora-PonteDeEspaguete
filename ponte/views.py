@@ -94,7 +94,7 @@ def exportar_csv(request, username, ponte_id):
     writer = csv.writer(response)
     writer.writerow(['Nome da Ponte', ponte.nome_ponte])
     writer.writerow(['Autor', ponte.autor.username])
-    writer.writerow([])  # Linha em branco
+    writer.writerow([]) 
 
     for barra in barras:
         writer.writerow([])
@@ -104,6 +104,6 @@ def exportar_csv(request, username, ponte_id):
         writer.writerow(['Esforco Interno', barra.esforco_interno])
         writer.writerow(['Numero de Fios', barra.n_fios])
         writer.writerow(['Numero de Fios Revisados', barra.n_fios_revisados])
-        writer.writerow([])  # Linha em branco entre barras
+        writer.writerow([])
 
     return response
