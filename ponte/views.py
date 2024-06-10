@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse
 from .models import Ponte, Barra
 from django.contrib.auth.decorators import login_required
+import csv
 # Create your views here.
 
 def index(request):
@@ -50,7 +52,13 @@ def calcular_resultado_total(request, username, ponte_id):
     resultado_total = 0
 
     for barra in barras:
+        numero_fios = barra.calcular_numero_fios()
         numero_fios_revisados = barra.calcular_numero_fios_revisados()
+
+        barra.n_fios = numero_fios
+        barra.n_fios_revisados = numero_fios_revisados
+        barra.save()
+
         resultado_barra = barra.cm * numero_fios_revisados
         resultado_total += resultado_barra
 
@@ -76,3 +84,26 @@ def criar_ponte(request):
     else:
         return render(request, 'ponte/partils/home.html')
     
+def exportar_csv(request, username, ponte_id):
+    ponte = get_object_or_404(Ponte, id=ponte_id, autor__username=username)
+    barras = ponte.barras.all()
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = f'attachment; filename="Ponte: {ponte.autor.username} - {ponte.nome_ponte}.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['Nome da Ponte', ponte.nome_ponte])
+    writer.writerow(['Autor', ponte.autor.username])
+    writer.writerow([])  # Linha em branco
+
+    for barra in barras:
+        writer.writerow([])
+        writer.writerow(['Nome da Barra', barra.nome])
+        writer.writerow(['Comprimento (cm)', barra.cm])
+        writer.writerow(['Tipo de Esforco', barra.tipo])
+        writer.writerow(['Esforco Interno', barra.esforco_interno])
+        writer.writerow(['Numero de Fios', barra.n_fios])
+        writer.writerow(['Numero de Fios Revisados', barra.n_fios_revisados])
+        writer.writerow([])  # Linha em branco entre barras
+
+    return response

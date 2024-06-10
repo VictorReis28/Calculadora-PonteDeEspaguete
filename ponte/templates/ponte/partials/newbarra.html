@@ -169,14 +169,18 @@
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                O peso em media da metade da ponte é:{{ ponte.peso_metade|floatformat:5 }}
+                <strong>O peso em media da metade da ponte é:</strong> <u>{{ ponte.peso_metade|floatformat:5 }}</u>
             </div>
             <div class="modal-footer">
                 <button type="button"
                     class="btn btn-secondary"
                     data-bs-dismiss="modal">Fechar</button>
-                <button type="button"
-                    class="btn btn-primary">Exportar</button>
+                <form method="post"
+                    action="{% url 'exportar_csv' ponte.autor.username ponte.id %}">
+                    {% csrf_token %}
+                    <button type="submit"
+                        class="btn btn-primary">Exportar</button>
+                </form>
             </div>
         </div>
     </div>
