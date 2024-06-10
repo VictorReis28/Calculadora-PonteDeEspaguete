@@ -1,65 +1,129 @@
 {% load static %}
-<div class="ponte ponte-list-item">
-    <div class="ponte-title-container">
-        <h2 class="ponte-title">
-            <a href="{% url 'ponte_detail' username=ponte.autor.username ponte_id=ponte.id %}">
-                {{ ponte.nome_ponte }}
-            </a>
-        </h2>
-    </div>
-    <div class="ponte-infos">
-        <div class="ponte-author">
-            <span class="ponte-author-item">
-                <i class="fas fa-user"></i>
-                {% if ponte.autor.first_name %}
-                {{ ponte.autor.first_name }} {{ ponte.autor.last_name }}
-                {% else %}
-                {{ ponte.autor.username }}
-                {% endif %}
-            </span>
-        </div>
-        <div class="ponte-date">
-            <span class="ponte-date-item">
-                <i class="fas fa-calendar-alt"></i>
-                {{ ponte.created_at|date:"d/m/Y" }}<br> às
-                {{ ponte.created_at|date:"H:i" }}
-            </span>
-        </div>
-    </div>
 
-
-
-    <div class="ponte-meta-container">
-        <div class="ponte-meta ponte-barra">
-            <h3 class="ponte-meta-title"><i class="fas fa-bars"></i>
-                {% if ponte.barras.count == 1 %}
-                Barra
-                {% else %}
-                Barras
-                {% endif %}</h3>
-            <div class="ponte-meta-text">
-                {% if ponte.barras.count == 1 %}
-                {{ ponte.barras.count }} Barra
-                {% else %}
-                {{ ponte.barras.count }} Barras
-                {% endif %}
+{% if resultados %}
+    {% for ponte in resultados %}
+        <div class="ponte ponte-list-item">
+            <div class="ponte-title-container">
+                <h2 class="ponte-title">
+                    <a href="{% url 'ponte_detail' username=ponte.autor.username ponte_id=ponte.id %}">
+                        {{ ponte.nome_ponte }}
+                    </a>
+                </h2>
             </div>
-        </div>
-        <div class="ponte-meta ponte-pmedio">
-            <h3 class="ponte-meta-title"><i class="fas fa-weight-hanging"></i> Peso medio</h3>
-            <div class="ponte-meta-text">
-                {{ ponte.peso_metade }} g/cm
-
+            <div class="ponte-infos">
+                <div class="ponte-author">
+                    <span class="ponte-author-item">
+                        <i class="fas fa-user"></i>
+                        {% if ponte.autor.first_name %}
+                        {{ ponte.autor.first_name }} {{ ponte.autor.last_name }}
+                        {% else %}
+                        {{ ponte.autor.username }}
+                        {% endif %}
+                    </span>
+                </div>
+                <div class="ponte-date">
+                    <span class="ponte-date-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        {{ ponte.created_at|date:"d/m/Y" }}<br> às
+                        {{ ponte.created_at|date:"H:i" }}
+                    </span>
+                </div>
             </div>
+
+            <div class="ponte-meta-container">
+                <div class="ponte-meta ponte-barra">
+                    <h3 class="ponte-meta-title"><i class="fas fa-bars"></i>
+                        {% if ponte.barras.count == 1 %}
+                        Barra
+                        {% else %}
+                        Barras
+                        {% endif %}</h3>
+                    <div class="ponte-meta-text">
+                        {% if ponte.barras.count == 1 %}
+                        {{ ponte.barras.count }} Barra
+                        {% else %}
+                        {{ ponte.barras.count }} Barras
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="ponte-meta ponte-pmedio">
+                    <h3 class="ponte-meta-title"><i class="fas fa-weight-hanging"></i> Peso medio</h3>
+                    <div class="ponte-meta-text">
+                        {{ ponte.peso_metade }} g/cm
+                    </div>
+                </div>
+            </div>
+
+            <footer class="ponte-footer">
+                <a class="ponte-read-more button button-dark button-full-width"
+                    href="{% url 'ponte_detail' username=ponte.autor.username ponte_id=ponte.id %}">
+                    <i class="fas fa-eye"></i>
+                    <span>Ver mais...</span>
+                </a>
+            </footer>
         </div>
-    </div>
+    {% endfor %}
+{% else %}
+    {% for ponte in pontes %}
+        <div class="ponte ponte-list-item">
+            <div class="ponte-title-container">
+                <h2 class="ponte-title">
+                    <a href="{% url 'ponte_detail' username=ponte.autor.username ponte_id=ponte.id %}">
+                        {{ ponte.nome_ponte }}
+                    </a>
+                </h2>
+            </div>
+            <div class="ponte-infos">
+                <div class="ponte-author">
+                    <span class="ponte-author-item">
+                        <i class="fas fa-user"></i>
+                        {% if ponte.autor.first_name %}
+                        {{ ponte.autor.first_name }} {{ ponte.autor.last_name }}
+                        {% else %}
+                        {{ ponte.autor.username }}
+                        {% endif %}
+                    </span>
+                </div>
+                <div class="ponte-date">
+                    <span class="ponte-date-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        {{ ponte.created_at|date:"d/m/Y" }}<br> às
+                        {{ ponte.created_at|date:"H:i" }}
+                    </span>
+                </div>
+            </div>
 
-    <footer class="ponte-footer">
-        <a class="ponte-read-more button button-dark button-full-width"
-            href="{% url 'ponte_detail' username=ponte.autor.username ponte_id=ponte.id %}">
-            <i class="fas fa-eye"></i>
-            <span>Ver mais...</span>
-        </a>
-    </footer>
+            <div class="ponte-meta-container">
+                <div class="ponte-meta ponte-barra">
+                    <h3 class="ponte-meta-title"><i class="fas fa-bars"></i>
+                        {% if ponte.barras.count == 1 %}
+                        Barra
+                        {% else %}
+                        Barras
+                        {% endif %}</h3>
+                    <div class="ponte-meta-text">
+                        {% if ponte.barras.count == 1 %}
+                        {{ ponte.barras.count }} Barra
+                        {% else %}
+                        {{ ponte.barras.count }} Barras
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="ponte-meta ponte-pmedio">
+                    <h3 class="ponte-meta-title"><i class="fas fa-weight-hanging"></i> Peso medio</h3>
+                    <div class="ponte-meta-text">
+                        {{ ponte.peso_metade }} g/cm
+                    </div>
+                </div>
+            </div>
 
-</div>
+            <footer class="ponte-footer">
+                <a class="ponte-read-more button button-dark button-full-width"
+                    href="{% url 'ponte_detail' username=ponte.autor.username ponte_id=ponte.id %}">
+                    <i class="fas fa-eye"></i>
+                    <span>Ver mais...</span>
+                </a>
+            </footer>
+        </div>
+    {% endfor %}
+{% endif %}

@@ -6,11 +6,16 @@ import csv
 # Create your views here.
 
 def index(request):
-    if request.user.is_authenticated:
+    query = request.GET.get('q')
+    pontes = None
+    resultados = None
+    
+    if query:
+        resultados = Ponte.objects.filter(nome_ponte__icontains=query, autor=request.user).order_by('-id')
+    elif request.user.is_authenticated:
         pontes = Ponte.objects.filter(autor=request.user).order_by('-id')
-        return render(request, 'ponte/pages/home.html', context={'pontes': pontes})
-    else:
-        return render(request, 'ponte/pages/homeNL.html')
+
+    return render(request, 'ponte/pages/home.html', {'pontes': pontes, 'resultados': resultados, 'query': query})
 
 
 def ponte_detail(request, username, ponte_id):
