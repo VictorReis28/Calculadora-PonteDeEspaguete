@@ -13,7 +13,23 @@ def ponte_detail(request, username, ponte_id):
     barras = Barra.objects.filter(ponte=ponte)
     return render(request, 'ponte/pages/resultados.html', {'ponte': ponte, 'barras': barras})
 
+def adicionar_barra(request, username, ponte_id):
+    if request.method == 'POST':
+        ponte = get_object_or_404(Ponte, id=ponte_id, autor__username=username)
+        nome = request.POST.get('nome-barra')
+        comprimento = request.POST.get('comprimento-barra')
+        esforco_interno = request.POST.get('esforco-interno')
+        tipo_esforco = request.POST.get('tipo-esforco')
 
+        Barra.objects.create(
+            nome=nome,
+            cm=comprimento,
+            esforco_interno=esforco_interno,
+            tipo=tipo_esforco,
+            ponte=ponte
+        )
+        return redirect('ponte_detail', username=username, ponte_id=ponte_id)
+    return redirect('ponte_detail', username=username, ponte_id=ponte_id)
 
 def excluir_barra(request, username, ponte_id, barra_id):
     barra = get_object_or_404(Barra, id=barra_id, ponte__id=ponte_id, ponte__autor__username=username)

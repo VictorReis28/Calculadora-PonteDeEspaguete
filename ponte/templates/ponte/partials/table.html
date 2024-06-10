@@ -7,6 +7,7 @@
                 <th scope="col">Tipo de Esforço</th>
                 <th scope="col">Esforço Interno</th>
                 <th scope="col">N° de Fios</th>
+                <th scope="col">N° de Fios revisados</th>
                 <th scope="col">Ações</th>
             </tr>
         </thead>
@@ -15,9 +16,18 @@
             <tr>
                 <td class="text-center">{{ barra.nome }}</td>
                 <td class="text-center">{{ barra.cm }}</td>
-                <td class="text-center">{{ barra.tipo }}</td>
+                <td class="text-center">
+                    {% if barra.tipo == "T" %}
+                        Tração
+                    {% elif barra.tipo == "C" %}
+                        Compressão
+                    {% else %}
+                        {{ barra.tipo }}
+                    {% endif %}
+                </td>
                 <td class="text-center">{{ barra.esforco_interno }}</td>
-                <td class="text-center">{{ barra.n_fios }}</td>
+                <td class="text-center">{{ barra.calcular_numero_fios|floatformat:"8" }}</td>
+                <td class="text-center">{{ barra.calcular_numero_fios_revisados|floatformat:"8" }}</td>
                 <td class="text-center">
                     <form method="post" action="{% url 'excluir_barra' username=ponte.autor.username ponte_id=ponte.id barra_id=barra.id %}">
                         {% csrf_token %}

@@ -1,5 +1,8 @@
 <div class="align-self-start font-weight-bold p-2">Barras</div>
-<form id="addTodoForm">
+<form id="addTodoForm"
+    method="post"
+    action="{% url 'adicionar_barra' username=ponte.autor.username ponte_id=ponte.id %}">
+    {% csrf_token %}
     <div class="align-self-center font-weight-bold p-2">
         <label for="nome-barra">Nome da Barra</label>
         <a tabindex="0"
@@ -22,6 +25,7 @@
             type="text"
             class="form-control mt-1 mb-1"
             id="nome-barra"
+            name="nome-barra"
             placeholder="Nome da Barra" />
     </div>
     <div class="align-self-center font-weight-bold p-2">
@@ -46,6 +50,7 @@
             type="text"
             class="form-control mt-1 mb-1"
             id="comprimento-barra"
+            name="comprimento-barra"
             placeholder="Comprimento da Barra" />
     </div>
     <div class="align-self-center font-weight-bold p-2">
@@ -70,6 +75,7 @@
             type="text"
             class="form-control mt-1 mb-1"
             id="esforco-interno"
+            name="esforco-interno"
             placeholder="Esforço Interno" />
     </div>
     <div class="align-self-center font-weight-bold p-2">
@@ -92,6 +98,7 @@
         </a>
         <select class="form-control mt-1 mb-1"
             id="tipo-esforco"
+            name="tipo-esforco"
             style="background-color: #27292c; color: #5d6269;">
             <option value="T">Tração</option>
             <option value="C">Compressão</option>
@@ -102,7 +109,10 @@
             class="btn btn-primary ">Adicionar</button>
     </div>
 </form>
-<form id="updateTodoForm">
+
+<form id="updateTodoForm"
+    method="post"
+    action="#">
     <div class="align-self-center font-weight-bold p-2">
         <label for="peso-linear">Peso Linear</label>
         <a tabindex="0"
@@ -121,17 +131,16 @@
                     d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
             </svg>
         </a>
-        <input style="background-color: #27292c; color: #5d6269;"
-            type="text"
-            class="form-control mt-1 mb-1"
-            id="peso-linear"
-            placeholder="Peso Linear" />
+        <div style="background-color: #27292c; color: #5d6269;"
+            class="form-control mt-1 mb-1 p-2"
+            id="peso-linear">
+            {{ ponte.peso_linear }}
+        </div>
     </div>
     <div class="align-self-end p-2 d-flex justify-content-center">
         <button type="submit"
-            class="btn btn-primary">
-            Calcular
-        </button>
+            class="btn btn-primary">Calcular</button>
     </div>
 </form>
+
 </div>

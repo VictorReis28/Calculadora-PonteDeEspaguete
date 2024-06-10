@@ -5,3 +5,4 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 var popover = new bootstrap.Popover(document.querySelectorAll('[data-bs-toggle="popover"]'), {
   trigger: 'focus'
 })
+
