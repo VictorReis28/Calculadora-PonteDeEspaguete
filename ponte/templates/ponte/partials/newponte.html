@@ -63,24 +63,13 @@
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/ponte/criar"
-                    method="post">
+                <form action="/ponte/criar" method="post">
                     {% csrf_token %}
                     <label for="nome_ponte">Nome da Ponte:</label><br>
-                    <input type="text"
-                        id="nome_ponte"
-                        name="nome_ponte"
-                        required><br><br>
-
+                    <input type="text" id="nome_ponte" name="nome_ponte" required style="background-color: #27292c; color: #5d6269; border: 1px solid #666; padding: 8px;"><br><br>
+            
                     <label for="peso_linear">Peso Linear:</label><br>
-                    <input type="number"
-                        id="peso_linear"
-                        name="peso_linear"
-                        step="0.01"
-                        min="0"
-                        required><br><br>
-
-
+                    <input type="number" id="peso_linear" name="peso_linear" step="0.01" min="0" required style="background-color: #27292c; color: #5d6269; border: 1px solid #666; padding: 8px;"><br><br>
             </div>
             <div class="modal-footer">
                 <button type="button"
