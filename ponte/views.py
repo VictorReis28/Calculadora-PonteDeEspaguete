@@ -99,17 +99,23 @@ def todo(request, todoId):
     is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
 
     if is_ajax:
-        todo = get_object_or_404(Barra, id=todoId)
-
+        todo = list(Barra.objects.filter(ponte_id=todoId).values())
+        ponte = get_object_or_404(Ponte, id=todoId)
         if request.method == 'PUT':
             data = json.load(request)
             updated_values = data.get('payload')
+            if ((updated_values['peso_linear']) != '') or (ponte.peso_linear == None):
+                ponte.peso_linear = updated_values['peso_linear']
+                todas = 0
+                for barra in todo:
+                    aux = float(barra['cm']) * float(barra['n_fios_revisado'])
+                    todas += aux
+                ponte.peso_metade = todas * (float(ponte.peso_linear))
+                ponte.save()
 
-            todo.task = updated_values['task']
-            todo.completed = updated_values['completed']
-            todo.save()
-
-            return JsonResponse({'status': 'Todo updated!'})
+                return JsonResponse({'status': 'Todo updated!'})
+            if ((updated_values['peso_linear']) == '') and (ponte.peso_linear != None):
+                return JsonResponse({'status': 'Todo updated!'})
 
         if request.method == 'DELETE':
             todo.delete()
