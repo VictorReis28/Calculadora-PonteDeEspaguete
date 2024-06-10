@@ -135,6 +135,11 @@
     font-size: 1.6rem;
 }
 
+.ponte-footer {
+    margin-top: auto;
+    width: 100%;
+}
+
 .ponte-footer a {
     background: var(--color-primary-dark);
     display: block;

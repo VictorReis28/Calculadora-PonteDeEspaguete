@@ -5,8 +5,8 @@ from django.http import JsonResponse
 
 def register_view(request):
     if request.method == 'POST':
-        username = request.POST.get('username').lower()  # Converte para minúsculas
-        email = request.POST.get('email').lower()  # Converte para minúsculas
+        username = request.POST.get('username').lower() 
+        email = request.POST.get('email').lower() 
         password = request.POST.get('password')
         
         if User.objects.filter(username=username).exists():
@@ -23,7 +23,7 @@ def register_view(request):
 
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST.get('username').lower()  # Converte para minúsculas
+        username = request.POST.get('username').lower()
         password = request.POST.get('password')
         
         user = authenticate(request, username=username, password=password)
