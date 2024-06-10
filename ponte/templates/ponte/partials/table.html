@@ -14,11 +14,11 @@
         <tbody>
             {% for barra in barras %}
             <tr>
-                <td class="text-center">id</td>
-                <td class="text-center">100</td>
-                <td class="text-center">T</td>
-                <td class="text-center">500</td>
-                <td class="text-center">1000</td>
+                <td class="text-center">{{ barra.id }}</td>
+                <td class="text-center">{{ barra.cm }}</td>
+                <td class="text-center">{{ barra.tipo }}</td>
+                <td class="text-center">{{ barra.esforco_interno }}</td>
+                <td class="text-center">{{ barra.n_fios }}</td>
                 <td class="text-center">
                     <button class="btn btn-danger"
                         type="button">Excluir</button>
