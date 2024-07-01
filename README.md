@@ -11,7 +11,7 @@ Este repositório contém o código fonte de um projeto desenvolvido para a disc
 
 ## Funcionalidades
 
-- **Cadastro de Pontes**: Permite o cadastro das pontes participantes do evento com seus respectivos dados (nome da equipe, peso da ponte, entre outros).
+- **Cadastro de Pontes**: Permite o cadastro das pontes participantes do evento com seus respectivos dados (nome, peso da ponte, entre outros).
 - **Cálculo de Estrutura**: Realiza os cálculos necessários para avaliar a resistência e estabilidade das pontes de macarrão.
 - **Relatórios**: Gera relatórios com os resultados dos cálculos para cada ponte cadastrada.
 
