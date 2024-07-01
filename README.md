@@ -1,17 +1,18 @@
-# CalculadoraPonteTeste
- 
+# Projeto Ponte de Macarrão
 
- Barra 
-Nome, comprimento, esforço interno e tipo de esforça. (Informado pelo usuario)
+---
 
-N. de fios (Como resultado)
+Este repositório contém o código fonte de um projeto desenvolvido para a disciplina de [Resistência dos Materiais] na Universidade de Vassouras. O projeto tem como objetivo calcular a estrutura de uma ponte de macarrão, um evento realizado na universidade.
 
-Botão adicionar (Gera um lista) 
+## Tecnologias Utilizadas
 
-Funções -> 
+- **Django**: Framework web em Python utilizado para o desenvolvimento do backend da aplicação.
+- **Bootstrap**: Framework CSS utilizado para o desenvolvimento do frontend, proporcionando uma interface responsiva e amigável.
 
-Tipo C = resultadoc = sqrt((esforco_interno * comprimento**2) / 27906 * 1**4)
+## Funcionalidades
 
-Tipo T = resultadot = esforco_interno / Decimal(42.67)
+- **Cadastro de Pontes**: Permite o cadastro das pontes participantes do evento com seus respectivos dados (nome da equipe, peso da ponte, entre outros).
+- **Cálculo de Estrutura**: Realiza os cálculos necessários para avaliar a resistência e estabilidade das pontes de macarrão.
+- **Relatórios**: Gera relatórios com os resultados dos cálculos para cada ponte cadastrada.
 
-
+---
